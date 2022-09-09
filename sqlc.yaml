@@ -19,7 +19,7 @@ packages:
     emit_json_tags: true
     emit_prepared_queries: false
     emit_interface: false
-    emit_exact_table_names: true
+    emit_exact_table_names: false
 # sqlc will try to make a plural name into a singular name
 # for example: 
 # accounts table -> Account struct (if false)

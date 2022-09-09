@@ -25,9 +25,9 @@ type CreateAccountParams struct {
 	Currency string `json:"currency"`
 }
 
-func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (Accounts, error) {
+func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (Account, error) {
 	row := q.db.QueryRowContext(ctx, createAccount, arg.Owner, arg.Balance, arg.Currency)
-	var i Accounts
+	var i Account
 	err := row.Scan(
 		&i.ID,
 		&i.Owner,
