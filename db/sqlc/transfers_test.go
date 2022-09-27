@@ -4,7 +4,6 @@ package db
 
 import (
 	"context"
-	"fmt"
 	"testing"
 	"time"
 
@@ -102,7 +101,6 @@ func TestListTransfer(t *testing.T) {
 	require.Len(t, transfers, 5)
 
 	for _, transfer := range transfers {
-		fmt.Println(transfer)
 		require.NotEmpty(t, transfer)
 		require.True(t, transfer.FromAccountID == account1.ID || transfer.ToAccountID == account1.ID)
 	}
