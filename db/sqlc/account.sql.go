@@ -123,16 +123,6 @@ type ListAccountsParams struct {
 	Offset int32  `json:"offset"`
 }
 
-// Hi, I have a question about the POSTGRES,Go,SQL course. 
-// I am on Section 5, Unit Testing. I am having an error when using ListAccounts function.
-// The length of the accounts is returning 1 and causing an error.
-// ListAccounts was given params in the court, one of them being an owner.
-// The way it is implemented has me specify an Owner, and then returns accounts that have that owner.
-// The way it was taught on the video has it so that we generate one account (lastAccount) and
-// then add that as the account.Owner we will be querying for. 
-// However, I don't have 5  accounts with the same name because each account is randomly generated account  
-// and has a different owner. 
-// Was this a mistake? What would be a good viable way to fix this?
 
 
 func (q *Queries) ListAccounts(ctx context.Context, arg ListAccountsParams) ([]Account, error) {
