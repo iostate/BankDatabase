@@ -6,6 +6,7 @@ package db
 
 import (
 	"time"
+	"fmt"
 )
 
 type Account struct {
@@ -15,6 +16,11 @@ type Account struct {
 	Currency  string    `json:"currency"`
 	CreatedAt time.Time `json:"created_at"`
 }
+
+func (x Account) String() string {
+	return fmt.Sprintf("Account ID: %d - Owner: %v - Balance: %d %s - Created Date: %s", x.ID, x.Owner, x.Balance, x.Currency, x.CreatedAt)
+}
+
 
 type Entry struct {
 	ID        int64 `json:"id"`

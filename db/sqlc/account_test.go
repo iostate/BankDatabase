@@ -41,6 +41,8 @@ func TestGetAccount(t *testing.T) {
 	require.NoError(t, err)
 	require.NotEmpty(t, account2)
 
+	t.Logf(account1.String())
+
 	require.Equal(t, account1.ID, account2.ID)
 	require.Equal(t, account1.Owner, account2.Owner)
 	require.Equal(t, account1.Balance, account2.Balance)

@@ -2,7 +2,6 @@ package db
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"os"
 	"testing"
@@ -15,7 +14,7 @@ const (
 	dbSource = "postgresql://root:secret@localhost:6432/simple_bank?sslmode=disable"
 )
 
-// Queries requires a connection to thee database
+// Queries requires a connection to the database
 var testQueries *Queries
 var testDB *sql.DB
 
@@ -27,7 +26,5 @@ func TestMain(m *testing.M) {
 	}
 
 	testQueries = New(testDB)
-	fmt.Println("Successful connection")
-
 	os.Exit(m.Run())
 }
