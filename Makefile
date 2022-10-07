@@ -35,10 +35,10 @@ migratedown:
 
 sqlc: 
 	sqlc generate
-	sed -i -e 's/sql.NullString/string/g' db/sqlc/*.sql.go db/sqlc/models.go
-	sed -i -e 's/sql.NullInt64/int64/g' db/sqlc/*.sql.go db/sqlc/models.go
-	sed -i -e 's/sql.NullTime/time.Time/g' db/sqlc/*.sql.go db/sqlc/models.go
-	goimports -w db/sqlc/
+	# sed -i -e 's/sql.NullString/string/g' db/sqlc/*.sql.go db/sqlc/models.go
+	# sed -i -e 's/sql.NullInt64/int64/g' db/sqlc/*.sql.go db/sqlc/models.go
+	# sed -i -e 's/sql.NullTime/time.Time/g' db/sqlc/*.sql.go db/sqlc/models.go
+	# goimports -w db/sqlc/
 
 test: 
 	go test -v -cover ./...
