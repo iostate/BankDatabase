@@ -17,14 +17,16 @@ const (
 
 // Queries requires a connection to thee database
 var testQueries *Queries
+var testDB *sql.DB
 
 func TestMain(m *testing.M) {
-	conn, err := sql.Open(dbDriver, dbSource)
+	var err error
+	testDB, err = sql.Open(dbDriver, dbSource)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	testQueries = New(conn)
+	testQueries = New(testDB)
 	fmt.Println("Successful connection")
 
 	os.Exit(m.Run())
