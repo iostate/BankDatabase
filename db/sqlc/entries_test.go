@@ -14,7 +14,6 @@ func createRandomEntry(t *testing.T, account Account) Entry {
 		AccountID: account.ID,
 		Amount:    util.RandomMoney(),
 	}
-	// fmt.Printf("Owner Name: %s\nBalance: %d %s", arg.Owner, arg.Balance, arg.Currency)
 
 	entry, err := testQueries.CreateEntry(context.Background(), arg)
 	require.NoError(t, err)
@@ -52,9 +51,6 @@ func TestListEntries(t *testing.T) {
 
 	for i := 0; i < 10; i++ {
 		createRandomEntry(t, account)
-		// p.s. my neck hurts, need to buy stand up desk
-		// p.s. radial nerve injury has forced me to become a jedi
-		// i love programming
 	}
 
 	arg := ListEntriesParams{
