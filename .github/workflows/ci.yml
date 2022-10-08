@@ -39,15 +39,15 @@ jobs:
 
     - name: Check out code Go module directory
       uses: actions/checkout@v3
-
+    
     - name: Install golang-migrate
       run: |
         curl -L https://github.com/golang-migrate/migrate/releases/download/$version/migrate.$platform-amd64.tar.gz
         tar xvz migrate.linux-amd64
         sudo mv migrate.linux-amd64 /usr/bin
         which migrate
-
-    - name: Run migrations
+    
+    - name: run migrations
       run: make migrateup
        
 
