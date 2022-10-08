@@ -4,7 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"log"
 	"testing"
 	"time"
 
@@ -28,8 +27,6 @@ func createRandomAccount(t *testing.T) Account {
 
 	require.NotZero(t, account.ID)
 	require.NotZero(t, account.CreatedAt)
-
-	log.Printf("Account ID: %d CreatedAt: %s Balance: %d\n", account.ID, account.CreatedAt, account.Balance)
 
 	return account
 }
@@ -90,7 +87,6 @@ func TestListAccounts(t *testing.T) {
 		createRandomAccount(t)
 	}
 
-	// Skip the first 5 records, return the next 5
 	arg := ListAccountsParams{
 		Limit:  5,
 		Offset: 5,
@@ -107,6 +103,5 @@ func TestListAccounts(t *testing.T) {
 		fmt.Println(ownerName)
 
 		require.NotEmpty(t, account)
-		// require.Equal(t, lastAccount.Owner, account.Owner)
 	}
 }
