@@ -142,6 +142,11 @@ ctx := context.WithValue(context.Background(), txKey, txName)
 
 Keep the logic in the main file and test in another file. Such as `store.go` and `store_test.go`
 
+### gin.Context
+
+Map entire request bodies using functions such as gin.Context.ShouldBindUri,
+ShouldBindJSON, etc.
+
 ## Error Track
 
 Running tool: /usr/local/go/bin/go test -timeout 30s -run ^TestTransferTx$ github.com/iostate/BankDatabase/db/sqlc
@@ -152,22 +157,3 @@ which presented `db.mu.Lock()`. I've never used this library for go before. I we
 and found an SO question. I traced the stack trace that the OP posted, and found the same line of code `db.mu.Lock()`.
 I knew it had something to do with the lock. Being great at debugging is an invaluable skill to have especially in critical situations
 such as an outage or a server going down.
-
-Successful connection
->> before: 761 713
-panic: runtime error: invalid memory address or nil pointer dereference
-[signal SIGSEGV: segmentation violation code=0x2 addr=0x0 pc=0x1046f5b78]
-
-goroutine 38 [running]:
-database/sql.(*DB).conn(0x1400005d9c8?, {0x10490ad50?, 0x1400011c008?}, 0xa4?)
- /usr/local/go/src/database/sql/sql.go:1288 +0x28
-database/sql.(*DB).begin(0x1400005d9c8?, {0x10490ad50, 0x1400011c008}, 0x104615844?, 0xf8?)
- /usr/local/go/src/database/sql/sql.go:1867 +0x30
-database/sql.(*DB).BeginTx(0x1400005da38?, {0x10490ad50, 0x1400011c008}, 0x300000002?)
- /usr/local/go/src/database/sql/sql.go:1845 +0x7c
-github.com/iostate/BankDatabase/db/sqlc.(*Store).execTx(0x1400005dad8?, {0x10490ad50?, 0x1400011c008?}, 0x1400005da88)
- /Users/qmtruong92/go/simplebank/db/sqlc/store.go:31 +0x30
-github.com/iostate/BankDatabase/db/sqlc.(*Store).TransferTx(_, {_, _}, {_, _, _})
- /Users/qmtruong92/go/simplebank/db/sqlc/store.go:67 +0x98
-github.com/iostate/BankDatabase/db/sqlc.TestTransferTx.func1()
- /Users/qmtruong92/go/simplebank/db/sqlc/store_test.go:27 +0x74
